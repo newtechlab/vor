@@ -3,6 +3,7 @@ module github.com/newtechlab/vor
 go 1.12
 
 require (
+	github.com/aws/aws-sdk-go-v2 v0.8.0
 	github.com/go-audio/audio v1.0.0
 	github.com/go-audio/wav v1.0.0
 	github.com/juju/errgo v0.0.0-20140925100237-08cceb5d0b53

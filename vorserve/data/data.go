@@ -12,8 +12,20 @@ type Storage interface {
 }
 
 func NewStorage(path string) (Storage, error) {
-	if strings.Contains(path, "https://") {
-		return nil, errgo.New("s3 storage not yet implemented")
+	parts := strings.SplitN(path, ":", 2)
+	if len(parts) != 2 {
+		return nil, errgo.New("unrecognized data specifier, should start with s3: or file:")
 	}
-	return newFolderStorage(path)
+	typ, arg := parts[0], parts[1]
+	if arg == "" {
+		return nil, errgo.New("bad data specifier")
+	}
+
+	switch typ {
+	case "s3":
+		return newS3Storage(arg)
+	case "file":
+		return newFolderStorage(arg)
+	}
+	return nil, errgo.New("unknown data type specifier")
 }

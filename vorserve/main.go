@@ -25,7 +25,7 @@ func init() {
 
 	flag.BoolVar(&fHelp, "h", false, "show this information")
 	flag.StringVar(&fHTTP, "http", ":5000", "interface and port to bind to")
-	flag.StringVar(&fData, "data", "", "data storage path, supports local folder or S3 bucket")
+	flag.StringVar(&fData, "data", "", "data storage path, supports local folder or S3 bucket, formatted as s3:bucketname or file:path")
 	flag.StringVar(&fSalt, "salt", "", "salt to use, if not specified a random one is used")
 }
 
