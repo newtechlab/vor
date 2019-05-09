@@ -130,8 +130,6 @@ func mergeWaveBuffers(data []*audio.IntBuffer) (*audio.IntBuffer, error) {
 func writeWaveFile(mbuff *audio.IntBuffer) (io.Reader, error) {
 	ws := &writerseeker.WriterSeeker{}
 	enc := wav.NewEncoder(ws, mbuff.Format.SampleRate, mbuff.SourceBitDepth, mbuff.Format.NumChannels, 1)
-	mbuff.Data = []int{}
-	print(mbuff.NumFrames(), " ", len(mbuff.Data))
 	err := enc.Write(mbuff)
 	if err == nil {
 		err = enc.Close()
