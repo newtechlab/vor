@@ -109,7 +109,6 @@ func getWaveBuffer(url string) (*audio.IntBuffer, error) {
 func mergeWaveBuffers(data []*audio.IntBuffer) (*audio.IntBuffer, error) {
 	size := len(data[0].Data)
 	for i := 1; i < len(data); i++ {
-		println(len(data[i].Data))
 		size += len(data[1].Data)
 		if data[i].Format.NumChannels != data[0].Format.NumChannels {
 			return nil, errgo.New("different number of channels in files")
@@ -122,7 +121,6 @@ func mergeWaveBuffers(data []*audio.IntBuffer) (*audio.IntBuffer, error) {
 		}
 		data[0].Data = append(data[0].Data, data[i].Data...)
 	}
-	println(len(data[0].Data))
 	return data[0], nil
 }
 

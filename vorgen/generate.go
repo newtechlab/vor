@@ -49,14 +49,14 @@ func generateSequence(p *twillio.Project, c config.Config, ox, oy int, no int) s
 			le--
 			vals := []string{}
 			for j := 1; j <= le; j++ {
-				vals = append(vals, fmt.Sprintf("{{widgets.ans_%v_%v.RecordingUrl}}", no, j))
+				vals = append(vals, fmt.Sprintf("\"{{widgets.ans_%v_%v.RecordingUrl}}\"", no, j))
 			}
 
 			s1 := createPlay(c, 2060+ox, 710+300*le+oy, fmt.Sprintf("play_%v_%v", no, le), c.ThanksMessage, nil)
 			p.Add(s1)
 
 			s2 := createWebhook(c, 1700+ox, 710+300*le+oy,
-				fmt.Sprintf("send_data_%v_%v", no, le), strings.Join(vals, ","),
+				fmt.Sprintf("send_data_%v_%v", no, le), "["+strings.Join(vals, ",")+"]",
 				&s1.Sid,
 			)
 			p.Add(s2)

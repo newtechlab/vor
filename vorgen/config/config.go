@@ -37,11 +37,12 @@ func Default() Config {
 		StartMessageReply:    "yes",
 		StartMessageBadReply: "Since you did not agree to the terms there is nothing you can help us with, thanks anyway.",
 		ThanksMessage:        "Thanks for calling, please remember to make 3 calls from different environments but the same phone",
-		DesiredTime:          20,
+		DesiredTime:          180,
 		Webhook:              "https://example.com/api/callback",
 		SilenceTimeout:       2,
 		NumberVariations:     10,
 		Threads: []Thread{
+			Thread{"A thread is a series of questions.", "That will always be asked in sequence.", "The order between different threads will be randomized though."},
 			Thread{"Do you like cats or dogs the most?", "Why is that?"},
 			Thread{"Why do you help us?", "Would you ever do it again?"},
 			Thread{"How is the weather like today?", "How does that compare to yesterday"},
