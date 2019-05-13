@@ -10,7 +10,7 @@ func showHelp() {
 	fmt.Println("vorserve: used to run a VOice Recording SERVEr")
 	fmt.Println("")
 	flag.PrintDefaults()
-	os.Exit(1)
+	os.Exit(0)
 }
 
 func showError(msg string) {
