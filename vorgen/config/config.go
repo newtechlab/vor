@@ -14,16 +14,35 @@ var languages = []string{"en-US", "nb-NO"}
 
 // A Config describes the configutation state of a answering robot.
 type Config struct {
-	Lang                 string   `json:"lang"`
-	StartMessage         string   `json:"start_message"`
-	StartMessageReply    string   `json:"start_message_reply"`
-	StartMessageBadReply string   `json:"start_message_bad_reply"`
-	ThanksMessage        string   `json:"thanks_message"`
-	DesiredTime          int      `json:"desired_time"`
-	Webhook              string   `json:"webhook"`
-	SilenceTimeout       int      `json:"silence_timeout"`
-	NumberVariations     int      `json:"number_variations"`
-	Threads              []Thread `json:"threads"`
+	// Language for both reading up texts and understanding the user
+	Lang string `json:"lang"`
+	// The initial Message played when the user calls, typically a question
+	// to ask for acceptance to use the data in addition to any other information
+	StartMessage string `json:"start_message"`
+	// The reply the user have to give to the initial message to proceed with the
+	// recording, typically somehting like "YES"
+	StartMessageReply string `json:"start_message_reply"`
+	// What the robot should say if the user did not say StartMessageReply
+	StartMessageBadReply string `json:"start_message_bad_reply"`
+	// Message that should be played at the end of the questions, when the user
+	// has replied as desired.
+	ThanksMessage string `json:"thanks_message"`
+	// How long a total recording is desired, the robot will keep asking questions
+	// (provided enough are defined) until a recording of this length has been achieved
+	DesiredTime int `json:"desired_time"`
+	// URL to the vorgserve (r) that should be sent the recordings.
+	Webhook string `json:"webhook"`
+	// How long a silence interval to wait before asking the next question
+	SilenceTimeout int `json:"silence_timeout"`
+	// How many different series of questions should be generated, a reasonable value
+	// may be 3 or 5. Performance of Twillio scales badly with large numbers,
+	NumberVariations int `json:"number_variations"`
+	// Series of questions that should be asked by the robot (see example below). Note
+	// That the order of thre threads will be randomized (based on NumberVariations),
+	// but that the order of questions inside each thread will be the same. This allows
+	// for threads of questions that will help the user to think about the stuff that
+	// will be asked next.
+	Threads []Thread `json:"threads"`
 }
 
 // A Thread is a series of questions that will always be asked in sequence.
