@@ -255,7 +255,7 @@ func createRecord(c config.Config, x, y int, name string, next *string) twillio.
 			[]twillio.Condition{},
 		),
 		createTransition(
-			"hangup", nil,
+			"hangup", next,
 			[]twillio.Condition{},
 		),
 	}
