@@ -31,6 +31,9 @@ This is a simple guid to get it running fast - depending on usecase and required
 2.  go get github.com/newtechlab/vor/vorserve
 3.  env AWS_ACCESS_KEY_ID=... AWS_SECRET_ACCESS_KEY=... AWS_DEFAULT_REGION=... vorserve -data s3:BUCKET-NAME-HERE -http :5000 -salt YOURSALTHERE
 4.  Install nging, set up as reverse proxy to the server you started on port 5000 and require a certificate using letsencrypt. (https://medium.com/@mightywomble/how-to-set-up-nginx-reverse-proxy-with-lets-encrypt-8ef3fd6b79e5)
+5.  Start server with nohup or similar (to keep it running after diskonnecting ssh) and add log dump filename:
+        env AWS_ACCESS_KEY_ID=... AWS_SECRET_ACCESS_KEY=... AWS_DEFAULT_REGION=... nohup vorserve -data s3:BUCKET-NAME-HERE -http :5000 > LOG-NAME-HERE.out &)
+6.  View log file with: tail -f LOG-NAME-HERE.out
 
 ### 4. Test access
 
