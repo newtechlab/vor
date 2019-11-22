@@ -77,7 +77,7 @@ type Thread []string
 // NORWEGIAN Default returns an example config that may be used as a reference.
 func Default() Config {
 	return Config{
-		Lang:                 "no-NB",
+		Lang:                 "nb-NO",
 		StartMessage:         "Takk for at du vil bidra. Samtykker du til at vi bruker opptaket fra din samtale til å trene og validere en modell for stemmeidentifikasjon?",
 		StartMessageReply:    "ja",
 		StartMessageBadReply: "Det er påkrevd at du samtykker for at vi skal kunne gjøre et opptak av din samtale. Takk for at du ringte.",
